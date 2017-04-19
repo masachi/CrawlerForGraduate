@@ -14,8 +14,10 @@ import java.util.HashMap;
  * Created by Masachi on 2017/4/18.
  */
 public class MultiThread {
+    public static String baseUrl = "http://www.dytj.gov.cn/";
     private static String URL = "http://www.dytj.gov.cn/article_show.aspx?typeid=9";
-    private static ArrayList<String> subUrl = new ArrayList<>();     private static ArrayList<String> title = new ArrayList<>();
+    private static ArrayList<String> subUrl = new ArrayList<>();
+    private static ArrayList<String> title = new ArrayList<>();
     private static Document doc = null;
     private static WebClient wc = new WebClient(BrowserVersion.CHROME);
 
@@ -39,13 +41,15 @@ public class MultiThread {
 //        doc = Jsoup.connect(Url).get();
         doc = Jsoup.parse(pageXml);
 
+        wc = null;
+
         getSubUrl();
     }
 
     private static void getSubUrl(){
         Elements elements = doc.getElementsByClass("l_left").select("a");
         for(Element element : elements){
-            subUrl.add("http://www.dytj.gov.cn/" + element.attr("href"));
+            subUrl.add(baseUrl + element.attr("href"));
             title.add(element.text());
         }
     }
