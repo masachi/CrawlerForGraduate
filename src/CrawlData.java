@@ -5,6 +5,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -16,13 +17,13 @@ public class CrawlData implements Runnable {
     private Document doc = null;
     private static WebClient client;
     private String originPage;
-    
+
     public CrawlData(String title, String url) {
         this.url = url;
         this.title = title;
     }
 
-    private void getPageFromWeb(String URL) throws Exception{
+    private void getPageFromWeb(String URL) throws Exception {
         client = new WebClient(BrowserVersion.CHROME);
         client.getOptions().setJavaScriptEnabled(true); //启用JS解释器，默认为true
         client.getOptions().setCssEnabled(false); //禁用css支持
@@ -32,11 +33,11 @@ public class CrawlData implements Runnable {
         client.getOptions().setThrowExceptionOnFailingStatusCode(false);
         client.getOptions().setTimeout(10000); //设置连接超时时间 ，这里是10S。如果为0，则无限期等待
 
-        client.waitForBackgroundJavaScript(600*1000);
+        client.waitForBackgroundJavaScript(600 * 1000);
         client.setAjaxController(new NicelyResynchronizingAjaxController());
 
         HtmlPage page = client.getPage(URL);
-        client.waitForBackgroundJavaScript(1000*3);
+        client.waitForBackgroundJavaScript(1000 * 3);
         client.setJavaScriptTimeout(0);
         //System.out.println(page);
         String pageXml = page.asXml(); //以xml的形式获取响应文本
@@ -46,63 +47,84 @@ public class CrawlData implements Runnable {
         doc = Jsoup.parse(pageXml);
     }
 
-    private void getActualUrl(){
+    private void getActualUrl() {
         String actualUrl = MultiThread.baseUrl + doc.getElementById("frame_content").attr("src");
         //System.out.println("actualUrl: "+ actualUrl);
 
-        int year = Integer.parseInt(title.substring(0,4));
-        if(year < 2013){
+        int year = Integer.parseInt(title.substring(0, 4));
+        if (year == 2013) {
             findDataOldVersion(actualUrl);
         }
-        else{
+        if (year == 2015 || year == 2016) {
             findDataNewVersion(actualUrl);
         }
     }
 
-    private void findDataOldVersion(String urlOld){
+    private void findDataOldVersion(String urlOld) {
         try {
             getPageFromWeb(urlOld);
-            String totalText = originPage.replaceAll("<[^>]+>", "").replaceAll("\r\n","").replaceAll(" ","");
-            System.out.println(totalText);
+            String totalText = originPage.replaceAll("（GDP）","").replaceAll("<[^>]+>", "").replaceAll("\r\n", "").replaceAll(" ", "");
+            //System.out.println(totalText);
 
-            Pattern peopleOld = Pattern.compile("");
-            Pattern ecomonyOld = Pattern.compile("");
-            Pattern agriculturalOld = Pattern.compile("");
-            Pattern industryOld = Pattern.compile("");
-            Pattern investmentOld = Pattern.compile("");
-            Pattern tradeOld = Pattern.compile("");
-            Pattern transportOld = Pattern.compile("");
-            Pattern ensuranceOld = Pattern.compile("");
-            Pattern educationOld = Pattern.compile("");
-            Pattern cultureOld = Pattern.compile("");
-            Pattern societyOLd = Pattern.compile("");
-            Pattern environmentOld = Pattern.compile("");
-        }
-        catch (Exception e){
+            Matcher peopleOld = Pattern.compile(".*?年末总户数(\\d+.\\d+|\\d+)万户，户籍总人口(\\d+.\\d+|\\d+)万人。全年出生人口(\\d+.\\d+|\\d+)万人，死亡人口(\\d+.\\d+|\\d+)万人。年末常住人口(\\d+.\\d+|\\d+)万人，其中城镇常住人口(\\d+.\\d+|\\d+)万人，城镇化率(\\d+.\\d+|\\d+)%。.*?").matcher(totalText);
+            Matcher economyOld = Pattern.compile(".*?全年地区生产总值(\\d+.\\d+|\\d+)亿元，按可比价格计算，比上年增长(\\d+.\\d+|\\d+)%，其中，第一产业增加值(\\d+.\\d+|\\d+)亿元，比上年增长(\\d+.\\d+|\\d+)%；第二产业增加值(\\d+.\\d+|\\d+)亿元，增长(\\d+.\\d+|\\d+) %；第三产增加值(\\d+.\\d+|\\d+) 亿元，增长(\\d+.\\d+|\\d+)%。.*?").matcher(totalText);
+            Matcher agriculturalOld = Pattern.compile("").matcher(totalText);
+            Matcher industryOld = Pattern.compile("").matcher(totalText);
+            Matcher investmentOld = Pattern.compile("").matcher(totalText);
+            Matcher tradeOld = Pattern.compile("").matcher(totalText);
+            Matcher transportOld = Pattern.compile("").matcher(totalText);
+            Matcher ensuranceOld = Pattern.compile("").matcher(totalText);
+            Matcher educationOld = Pattern.compile("").matcher(totalText);
+            Matcher cultureOld = Pattern.compile("").matcher(totalText);
+            Matcher societyOLd = Pattern.compile("").matcher(totalText);
+            Matcher environmentOld = Pattern.compile("").matcher(totalText);
+
+//            while (peopleOld.find()) {
+//                System.out.println(peopleOld.group(1));
+//                System.out.println(peopleOld.group(2));
+//                System.out.println(peopleOld.group(3));
+//                System.out.println(peopleOld.group(4));
+//                System.out.println(peopleOld.group(5));
+//                System.out.println(peopleOld.group(6));
+//                System.out.println(peopleOld.group(7));
+//            }
+
+            while(economyOld.find()){
+                System.out.println(economyOld.group(1));
+                System.out.println(economyOld.group(2));
+                System.out.println(economyOld.group(3));
+                System.out.println(economyOld.group(4));
+                System.out.println(economyOld.group(5));
+                System.out.println(economyOld.group(6));
+                System.out.println(economyOld.group(7));
+                System.out.println(economyOld.group(8));
+            }
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void findDataNewVersion(String urlNew){
+    private void findDataNewVersion(String urlNew) {
         try {
             getPageFromWeb(urlNew);
-            String totalText = originPage.replaceAll("<[^>]+>", "").replaceAll("\r\n", "").replaceAll(" ", "").replaceAll("   |      ","").replaceAll("\n","").replaceAll("&lt;!--.*?--&gt;","");
-            System.out.println(totalText);
+            String totalText = originPage.replaceAll("<[^>]+>", "").replaceAll("\r\n", "").replaceAll(" ", "").replaceAll("   |      ", "").replaceAll("\n", "").replaceAll("&lt;!--.*?--&gt;", "");
+            //System.out.println(totalText);
 
-            Pattern peopleNew = Pattern.compile("");
-            Pattern ecomonyNew = Pattern.compile("");
-            Pattern agriculturalNew = Pattern.compile("");
-            Pattern industryNew = Pattern.compile("");
-            Pattern investmentNew = Pattern.compile("");
-            Pattern tradeNew = Pattern.compile("");
-            Pattern transportNew = Pattern.compile("");
-            Pattern ensuranceNew = Pattern.compile("");
-            Pattern educationNew = Pattern.compile("");
-            Pattern cultureNew = Pattern.compile("");
-            Pattern societyNew = Pattern.compile("");
-            Pattern environmentNew = Pattern.compile("");
-        }
-        catch (Exception e){
+            Matcher peopleNew = Pattern.compile("").matcher(totalText);
+            Matcher ecomonyNew = Pattern.compile("").matcher(totalText);
+            Matcher agriculturalNew = Pattern.compile("").matcher(totalText);
+            Matcher industryNew = Pattern.compile("").matcher(totalText);
+            Matcher investmentNew = Pattern.compile("").matcher(totalText);
+            Matcher tradeNew = Pattern.compile("").matcher(totalText);
+            Matcher transportNew = Pattern.compile("").matcher(totalText);
+            Matcher ensuranceNew = Pattern.compile("").matcher(totalText);
+            Matcher educationNew = Pattern.compile("").matcher(totalText);
+            Matcher cultureNew = Pattern.compile("").matcher(totalText);
+            Matcher societyNew = Pattern.compile("").matcher(totalText);
+            Matcher environmentNew = Pattern.compile("").matcher(totalText);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -110,11 +132,10 @@ public class CrawlData implements Runnable {
     @Override
     public void run() {
         System.out.println("title: " + title + "url: " + url);
-        try{
+        try {
             getPageFromWeb(url);
             getActualUrl();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
