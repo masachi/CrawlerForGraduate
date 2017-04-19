@@ -138,7 +138,6 @@ public class CrawlData implements Runnable {
     }
 
     private void OutputExcel() {
-
         try {
             String excelPath = "file/" + title + ".xlsx";
             FileOutputStream fileOutputStream = new FileOutputStream(excelPath);
