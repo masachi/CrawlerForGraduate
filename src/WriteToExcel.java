@@ -43,17 +43,17 @@ public class WriteToExcel {
         sheet.getRow(8).createCell(2).setCellValue(temp.get(482) + per);
 
         sheet.getRow(11).createCell(2).setCellValue(temp.get(6));
-        sheet.getRow(11).createCell(3).setCellValue(add + temp.get(7));
+        sheet.getRow(11).createCell(3).setCellValue(add + temp.get(7) + per);
         sheet.getRow(12).createCell(2).setCellValue("");
         sheet.getRow(12).createCell(3).setCellValue("");
         sheet.getRow(13).createCell(2).setCellValue(temp.get(27));
-        sheet.getRow(13).createCell(3).setCellValue(add + temp.get(29));
+        sheet.getRow(13).createCell(3).setCellValue(add + temp.get(29) + per);
         sheet.getRow(14).createCell(2).setCellValue(temp.get(9));
-        sheet.getRow(14).createCell(3).setCellValue(add + temp.get(10));
+        sheet.getRow(14).createCell(3).setCellValue(add + temp.get(10) + per);
         sheet.getRow(15).createCell(2).setCellValue(temp.get(11));
-        sheet.getRow(15).createCell(3).setCellValue(add + temp.get(12));
+        sheet.getRow(15).createCell(3).setCellValue(add + temp.get(12) + per);
         sheet.getRow(16).createCell(2).setCellValue(temp.get(13));
-        sheet.getRow(16).createCell(3).setCellValue(add + temp.get(14));
+        sheet.getRow(16).createCell(3).setCellValue(add + temp.get(14) + per);
 
         sheet.getRow(20).createCell(2).setCellValue("");
         sheet.getRow(21).createCell(2).setCellValue("");
@@ -64,11 +64,11 @@ public class WriteToExcel {
         sheet.getRow(1).createCell(2).setCellValue("");
         sheet.getRow(1).createCell(3).setCellValue("");
         sheet.getRow(2).createCell(2).setCellValue(temp.get(77));
-        sheet.getRow(2).createCell(3).setCellValue(add + temp.get(79));
+        sheet.getRow(2).createCell(3).setCellValue(add + temp.get(79) + per);
         sheet.getRow(3).createCell(2).setCellValue(temp.get(80));
-        sheet.getRow(3).createCell(3).setCellValue(mis + temp.get(81));
+        sheet.getRow(3).createCell(3).setCellValue(mis + temp.get(81) + per);
         sheet.getRow(4).createCell(2).setCellValue(temp.get(82));
-        sheet.getRow(4).createCell(3).setCellValue(add + temp.get(83));
+        sheet.getRow(4).createCell(3).setCellValue(add + temp.get(83) + per);
 
         sheet.getRow(10).createCell(2).setCellValue(temp.get(84) + milton);
         sheet.getRow(11).createCell(2).setCellValue("");
