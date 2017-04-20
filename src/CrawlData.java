@@ -64,10 +64,10 @@ public class CrawlData implements Runnable {
         //System.out.println("actualUrl: "+ actualUrl);
 
         int year = Integer.parseInt(title.substring(0, 4));
-        findData(actualUrl);
+        findData(actualUrl, year);
     }
 
-    private void findData(String urlOld) {
+    private void findData(String urlOld, int year) {
         try {
             ArrayList<String> temp = new ArrayList<>();
             getPageFromWeb(urlOld);
@@ -75,7 +75,7 @@ public class CrawlData implements Runnable {
             //System.out.println(totalText);
 
             Matcher m = Pattern.compile("(\\d+\\.\\d+|\\d+)").matcher(totalText);
-
+            temp.add(String.valueOf(0));
             while(m.find()){
                 //System.out.println(m.group());
                 temp.add(m.group());
@@ -116,7 +116,13 @@ public class CrawlData implements Runnable {
 //                System.out.println(economyOld.group(7));
 //                System.out.println(economyOld.group(8));
 //            }
-
+            switch(year){
+                case 2006:
+                    WriteToExcel.writeToExcel2006(temp,title);
+                    break;
+                default:
+                    break;
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
