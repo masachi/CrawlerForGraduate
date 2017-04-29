@@ -77,7 +77,7 @@ public class CrawlData implements Runnable {
             Matcher m = Pattern.compile("(\\d+\\.\\d+|\\d+)").matcher(totalText);
             temp.add(String.valueOf(0));
             while(m.find()){
-                //System.out.println(m.group());
+                System.out.println(m.group());
                 temp.add(m.group());
             }
 
