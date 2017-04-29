@@ -72,12 +72,11 @@ public class CrawlData implements Runnable {
             ArrayList<String> temp = new ArrayList<>();
             getPageFromWeb(urlOld);
             String totalText = originPage.replaceAll("<[^>]+>", "").replaceAll("\r\n", "").replaceAll(" ", "");
-            //System.out.println(totalText);
 
             Matcher m = Pattern.compile("(\\d+\\.\\d+|\\d+)").matcher(totalText);
             temp.add(String.valueOf(0));
             while(m.find()){
-                System.out.println(m.group());
+                //System.out.println(m.group());
                 temp.add(m.group());
             }
 
@@ -118,7 +117,44 @@ public class CrawlData implements Runnable {
 //            }
             switch(year){
                 case 2006:
+                    //System.out.println(totalText);
                     WriteToExcel.writeToExcel2006(temp,title);
+                    break;
+                case 2008:
+                    //System.out.println(totalText);
+                    WriteToExcel.writeToExcel2008(temp,title);
+                    break;
+                case 2009:
+                    //System.out.println(totalText);
+                    WriteToExcel.writeToExcel2009(temp,title);
+                    break;
+                case 2010:
+                    //System.out.println(totalText);
+                    WriteToExcel.writeToExcel2010(temp,title);
+                    break;
+                case 2011:
+                    //System.out.println(totalText);
+                    WriteToExcel.writeToExcel2011(temp,title);
+                    break;
+                case 2012:
+                    //System.out.println(totalText);
+                    WriteToExcel.writeToExcel2012(temp,title);
+                    break;
+                case 2013:
+                    //System.out.println(totalText);
+                    WriteToExcel.writeToExcel2013(temp,title);
+                    break;
+                case 2014:
+                    //System.out.println(totalText);
+                    WriteToExcel.writeToExcel2014(temp,title);
+                    break;
+                case 2015:
+                    //System.out.println(totalText);
+                    WriteToExcel.writeToExcel2015(temp,title);
+                    break;
+                case 2016:
+                    //System.out.println(totalText);
+                    WriteToExcel.writeToExcel2016(temp,title);
                     break;
                 default:
                     break;
@@ -200,7 +236,7 @@ public class CrawlData implements Runnable {
         row.createCell(1).setCellValue("亿元");
 
         row = peopleSheet.createRow(20);
-        row.createCell(0).setCellValue("全年民营经济");
+        row.createCell(0).setCellValue("全年民营经济增加值");
         row = peopleSheet.createRow(21);
         row.createCell(0).setCellValue("民营经济");
 
@@ -297,9 +333,9 @@ public class CrawlData implements Runnable {
         row = tradeSheet.createRow(10);
         row.createCell(0).setCellValue("进出口总额");
         row = tradeSheet.createRow(11);
-        row.createCell(0).setCellValue("出口额");
-        row = tradeSheet.createRow(12);
         row.createCell(0).setCellValue("进口额");
+        row = tradeSheet.createRow(12);
+        row.createCell(0).setCellValue("出口额");
     }
 
     private void initTransport(){
