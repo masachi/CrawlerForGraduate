@@ -373,10 +373,349 @@ public class WriteToExcel {
     }
 
     public static void writeToExcel2009(ArrayList<String> temp, String title){
+        Workbook wb = null;
+        try {
+            FileInputStream fileInputStream = new FileInputStream("file/" + title + ".xlsx");
+            wb = WorkbookFactory.create(fileInputStream);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Sheet sheet = null;
+        sheet = wb.getSheet("综合");
+        sheet.getRow(1).createCell(2).setCellValue(temp.get(393));
+        sheet.getRow(1).createCell(3).setCellValue("");
+        sheet.getRow(2).createCell(2).setCellValue(temp.get(394));
+        sheet.getRow(2).createCell(3).setCellValue("");
+        sheet.getRow(3).createCell(2).setCellValue(temp.get(395));
+        sheet.getRow(3).createCell(3).setCellValue("");
+        sheet.getRow(4).createCell(2).setCellValue(temp.get(396));
+        sheet.getRow(4).createCell(3).setCellValue("");
+        sheet.getRow(5).createCell(2).setCellValue(temp.get(390));
+        sheet.getRow(5).createCell(3).setCellValue("");
+        sheet.getRow(6).createCell(2).setCellValue(temp.get(391));
+        sheet.getRow(6).createCell(3).setCellValue("");
+        sheet.getRow(7).createCell(2).setCellValue("");
+        sheet.getRow(7).createCell(3).setCellValue("");
+        sheet.getRow(8).createCell(2).setCellValue(temp.get(401) + per);
+        sheet.getRow(8).createCell(3).setCellValue(add + temp.get(402) + per);
 
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(7));
+        sheet.getRow(11).createCell(3).setCellValue(add + temp.get(8) + per);
+        sheet.getRow(12).createCell(2).setCellValue("");
+        sheet.getRow(12).createCell(3).setCellValue("");
+        sheet.getRow(13).createCell(2).setCellValue(temp.get(21));
+        sheet.getRow(13).createCell(3).setCellValue(add + temp.get(22) + per);
+        sheet.getRow(14).createCell(2).setCellValue(temp.get(9));
+        sheet.getRow(14).createCell(3).setCellValue(mis + temp.get(10) + per);
+        sheet.getRow(15).createCell(2).setCellValue(temp.get(11));
+        sheet.getRow(15).createCell(3).setCellValue(add + temp.get(12) + per);
+        sheet.getRow(16).createCell(2).setCellValue(temp.get(13));
+        sheet.getRow(16).createCell(3).setCellValue(add + temp.get(14) + per);
+
+        sheet.getRow(20).createCell(2).setCellValue(temp.get(28));
+        sheet.getRow(20).createCell(3).setCellValue(mis + temp.get(29) + per);
+        sheet.getRow(21).createCell(2).setCellValue("");
+
+        sheet.getRow(30).createCell(2).setCellValue("");
+        sheet.getRow(31).createCell(2).setCellValue("");
+        sheet.getRow(32).createCell(2).setCellValue("");
+
+
+        sheet.getRow(40).createCell(2).setCellValue("");
+
+
+        sheet = wb.getSheet("农业");
+        sheet.getRow(1).createCell(2).setCellValue("");
+        sheet.getRow(1).createCell(3).setCellValue("");
+        sheet.getRow(2).createCell(2).setCellValue(temp.get(32));
+        sheet.getRow(2).createCell(3).setCellValue(add + temp.get(34) + per);
+        sheet.getRow(3).createCell(2).setCellValue(temp.get(35));
+        sheet.getRow(3).createCell(3).setCellValue(mis + temp.get(37) + per);
+        sheet.getRow(4).createCell(2).setCellValue(temp.get(38));
+        sheet.getRow(4).createCell(3).setCellValue(add + temp.get(40) + per);
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(41) + milton);
+        sheet.getRow(10).createCell(3).setCellValue(add + temp.get(42) + per);
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(43) + milton);
+        sheet.getRow(11).createCell(3).setCellValue(add + temp.get(44) + per);
+        sheet.getRow(12).createCell(2).setCellValue(temp.get(45) + milton);
+        sheet.getRow(12).createCell(3).setCellValue(add + temp.get(46) + per);
+
+        sheet.getRow(20).createCell(2).setCellValue(temp.get(53) + milton);
+        sheet.getRow(20).createCell(3).setCellValue(add + temp.get(54) + per);
+
+
+        sheet = wb.getSheet("工业");
+        sheet.getRow(0).createCell(2).setCellValue("");
+        sheet.getRow(1).createCell(2).setCellValue(temp.get(57) + hu);
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(75) + bilyuan);
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(77) + bilyuan);
+        sheet.getRow(12).createCell(2).setCellValue(temp.get(80) + bilyuan);
+
+
+        sheet = wb.getSheet("投资");
+        sheet.getRow(0).createCell(2).setCellValue(temp.get(102) + bilyuan);
+        sheet.getRow(0).createCell(3).setCellValue(add + Double.parseDouble(temp.get(104)) * 100 + per);
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(118) + bilyuan);
+        sheet.getRow(10).createCell(3).setCellValue(add+ Double.parseDouble(temp.get(119)) * 100 + per);
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(120) + bilyuan);
+        sheet.getRow(11).createCell(3).setCellValue(add+ Double.parseDouble(temp.get(121)) * 100 + per);
+        sheet.getRow(12).createCell(2).setCellValue(temp.get(122) + bilyuan);
+        sheet.getRow(12).createCell(3).setCellValue(add+ Double.parseDouble(temp.get(123)) * 100 + per);
+
+
+        sheet = wb.getSheet("贸易");
+        sheet.getRow(0).createCell(2).setCellValue(temp.get(138) + bilyuan);
+        sheet.getRow(0).createCell(3).setCellValue(add + temp.get(139) + per);
+        sheet.getRow(1).createCell(2).setCellValue(temp.get(140) + bilyuan);
+        sheet.getRow(1).createCell(3).setCellValue(add + temp.get(141) + per);
+        sheet.getRow(2).createCell(2).setCellValue(temp.get(142) + bilyuan);
+        sheet.getRow(2).createCell(3).setCellValue(add + temp.get(143) + per);
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(172) + bildollar);
+        sheet.getRow(10).createCell(3).setCellValue(mis + temp.get(173) + per);
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(176) + bildollar);
+        sheet.getRow(11).createCell(3).setCellValue(add + temp.get(177) + per);
+        sheet.getRow(12).createCell(2).setCellValue(temp.get(174) + bildollar);
+        sheet.getRow(12).createCell(3).setCellValue(mis + temp.get (175) + per);
+
+
+        sheet = wb.getSheet("交通");
+        sheet.getRow(0).createCell(2).setCellValue(temp.get(180) + km);
+        sheet.getRow(1).createCell(2).setCellValue("");
+        sheet.getRow(2).createCell(2).setCellValue(temp.get(187) + "亿吨公里");
+        sheet.getRow(3).createCell(2).setCellValue(temp.get(189) + "亿人公里");
+        sheet.getRow(4).createCell(2).setCellValue("");
+        sheet.getRow(5).createCell(2).setCellValue("");
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(197) + bilyuan);
+        sheet.getRow(10).createCell(3).setCellValue(add + temp.get(198) + per);
+        sheet.getRow(11).createCell(2).setCellValue("");
+        sheet.getRow(11).createCell(3).setCellValue("");
+        sheet.getRow(12).createCell(2).setCellValue(temp.get(199) + milhu);
+        sheet.getRow(12).createCell(3).setCellValue(add + temp.get(200) + per);
+
+
+        sheet = wb.getSheet("金融");
+        sheet.getRow(0).createCell(2).setCellValue(temp.get(222) + bilyuan);
+        sheet.getRow(0).createCell(3).setCellValue(add + temp.get(223) + per);
+        sheet.getRow(1).createCell(2).setCellValue(temp.get(226) + bilyuan);
+        sheet.getRow(1).createCell(3).setCellValue(add + temp.get(227) + per);
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(235) + bilyuan);
+        sheet.getRow(10).createCell(3).setCellValue(add + temp.get(236) + per);
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(240) + bilyuan);
+        sheet.getRow(11).createCell(3).setCellValue("");
+
+
+        sheet = wb.getSheet("教育");
+        sheet.getRow(0).createCell(1).setCellValue("");
+        sheet.getRow(0).createCell(3).setCellValue("");
+        sheet.getRow(0).createCell(5).setCellValue("");
+
+
+        sheet.getRow(6).createCell(1).setCellValue(temp.get(247) + suo);
+        sheet.getRow(6).createCell(2).setCellValue(temp.get(257) + milpeo);
+        sheet.getRow(6).createCell(3).setCellValue(temp.get(258) + milpeo);
+        sheet.getRow(7).createCell(1).setCellValue("");
+        sheet.getRow(7).createCell(2).setCellValue("");
+        sheet.getRow(7).createCell(3).setCellValue("");
+        sheet.getRow(8).createCell(1).setCellValue("");
+        sheet.getRow(8).createCell(2).setCellValue("");
+        sheet.getRow(8).createCell(3).setCellValue("");
+        sheet.getRow(9).createCell(1).setCellValue(temp.get(245) + suo);
+        sheet.getRow(9).createCell(2).setCellValue(temp.get(251) + milpeo);
+        sheet.getRow(9).createCell(3).setCellValue(temp.get(252) + milpeo);
+        sheet.getRow(10).createCell(1).setCellValue(temp.get(244) + suo);
+        sheet.getRow(10).createCell(2).setCellValue("1.6" + milpeo);
+        sheet.getRow(10).createCell(3).setCellValue(temp.get(249) + milpeo);
+
+
+        try {
+            String excelPath = "file/" + title + ".xlsx";
+            FileOutputStream fileOutputStream = new FileOutputStream(excelPath);
+            wb.write(fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            System.out.println("Success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void writeToExcel2010(ArrayList<String> temp, String title){
+        Workbook wb = null;
+        try {
+            FileInputStream fileInputStream = new FileInputStream("file/" + title + ".xlsx");
+            wb = WorkbookFactory.create(fileInputStream);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Sheet sheet = null;
+        sheet = wb.getSheet("综合");
+        sheet.getRow(1).createCell(2).setCellValue("");
+        sheet.getRow(1).createCell(3).setCellValue("");
+        sheet.getRow(2).createCell(2).setCellValue("");
+        sheet.getRow(2).createCell(3).setCellValue("");
+        sheet.getRow(3).createCell(2).setCellValue("");
+        sheet.getRow(3).createCell(3).setCellValue("");
+        sheet.getRow(4).createCell(2).setCellValue("");
+        sheet.getRow(4).createCell(3).setCellValue("");
+        sheet.getRow(5).createCell(2).setCellValue("");
+        sheet.getRow(5).createCell(3).setCellValue("");
+        sheet.getRow(6).createCell(2).setCellValue("");
+        sheet.getRow(6).createCell(3).setCellValue("");
+        sheet.getRow(7).createCell(2).setCellValue("");
+        sheet.getRow(7).createCell(3).setCellValue("");
+        sheet.getRow(8).createCell(2).setCellValue("");
+        sheet.getRow(8).createCell(3).setCellValue("");
+
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(7));
+        sheet.getRow(11).createCell(3).setCellValue(add + temp.get(8) + per);
+        sheet.getRow(12).createCell(2).setCellValue("");
+        sheet.getRow(12).createCell(3).setCellValue("");
+        sheet.getRow(13).createCell(2).setCellValue("");
+        sheet.getRow(13).createCell(3).setCellValue("");
+        sheet.getRow(14).createCell(2).setCellValue(temp.get(9));
+        sheet.getRow(14).createCell(3).setCellValue(add + temp.get(10) + per);
+        sheet.getRow(15).createCell(2).setCellValue(temp.get(11));
+        sheet.getRow(15).createCell(3).setCellValue(add + temp.get(12) + per);
+        sheet.getRow(16).createCell(2).setCellValue(temp.get(13));
+        sheet.getRow(16).createCell(3).setCellValue(add + temp.get(14) + per);
+
+        sheet.getRow(20).createCell(2).setCellValue(temp.get(21));
+        sheet.getRow(20).createCell(3).setCellValue(add + temp.get(22) + per);
+        sheet.getRow(21).createCell(2).setCellValue("");
+
+        sheet.getRow(30).createCell(2).setCellValue("");
+        sheet.getRow(31).createCell(2).setCellValue("");
+        sheet.getRow(32).createCell(2).setCellValue("");
+
+
+        sheet.getRow(40).createCell(2).setCellValue("");
+
+
+        sheet = wb.getSheet("农业");
+        sheet.getRow(1).createCell(2).setCellValue("");
+        sheet.getRow(1).createCell(3).setCellValue("");
+        sheet.getRow(2).createCell(2).setCellValue(temp.get(25));
+        sheet.getRow(2).createCell(3).setCellValue(add + temp.get(27) + per);
+        sheet.getRow(3).createCell(2).setCellValue(temp.get(28));
+        sheet.getRow(3).createCell(3).setCellValue(add + temp.get(30) + per);
+        sheet.getRow(4).createCell(2).setCellValue(temp.get(31));
+        sheet.getRow(4).createCell(3).setCellValue(mis + temp.get(33) + per);
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(34) + milton);
+        sheet.getRow(10).createCell(3).setCellValue(add + temp.get(36) + per);
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(41) + milton);
+        sheet.getRow(11).createCell(3).setCellValue(add + temp.get(42) + per);
+        sheet.getRow(12).createCell(2).setCellValue(temp.get(43) + milton);
+        sheet.getRow(12).createCell(3).setCellValue(mis + temp.get(44) + per);
+
+        sheet.getRow(20).createCell(2).setCellValue(temp.get(51) + milton);
+        sheet.getRow(20).createCell(3).setCellValue(add + temp.get(52) + per);
+
+
+        sheet = wb.getSheet("工业");
+        sheet.getRow(0).createCell(2).setCellValue(temp.get(55) + bilyuan);
+        sheet.getRow(1).createCell(2).setCellValue(temp.get(59) + hu);
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(75) + bilyuan);
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(77) + bilyuan);
+        sheet.getRow(12).createCell(2).setCellValue(temp.get(79) + bilyuan);
+
+
+        sheet = wb.getSheet("投资");
+        sheet.getRow(0).createCell(2).setCellValue(temp.get(103) + bilyuan);
+        sheet.getRow(0).createCell(3).setCellValue("");
+
+        sheet.getRow(10).createCell(2).setCellValue("");
+        sheet.getRow(10).createCell(3).setCellValue("");
+        sheet.getRow(11).createCell(2).setCellValue("");
+        sheet.getRow(11).createCell(3).setCellValue("");
+        sheet.getRow(12).createCell(2).setCellValue("");
+        sheet.getRow(12).createCell(3).setCellValue("");
+
+
+        sheet = wb.getSheet("贸易");
+        sheet.getRow(0).createCell(2).setCellValue(temp.get(123) + bilyuan);
+        sheet.getRow(0).createCell(3).setCellValue(add + temp.get(124) + per);
+        sheet.getRow(1).createCell(2).setCellValue(temp.get(125) + bilyuan);
+        sheet.getRow(1).createCell(3).setCellValue(add + temp.get(126) + per);
+        sheet.getRow(2).createCell(2).setCellValue(temp.get(127) + bilyuan);
+        sheet.getRow(2).createCell(3).setCellValue(add + temp.get(128) + per);
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(155) + bildollar);
+        sheet.getRow(10).createCell(3).setCellValue(add + temp.get(156) + per);
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(159) + bildollar);
+        sheet.getRow(11).createCell(3).setCellValue(add + temp.get(160) + per);
+        sheet.getRow(12).createCell(2).setCellValue(temp.get(157) + bildollar);
+        sheet.getRow(12).createCell(3).setCellValue(add + temp.get (158) + per);
+
+
+        sheet = wb.getSheet("交通");
+        sheet.getRow(0).createCell(2).setCellValue(temp.get(163) + km);
+        sheet.getRow(1).createCell(2).setCellValue("");
+        sheet.getRow(2).createCell(2).setCellValue(temp.get(169) + "亿吨公里");
+        sheet.getRow(3).createCell(2).setCellValue(temp.get(171) + "亿人公里");
+        sheet.getRow(4).createCell(2).setCellValue("");
+        sheet.getRow(5).createCell(2).setCellValue("");
+
+        sheet.getRow(10).createCell(2).setCellValue("");
+        sheet.getRow(10).createCell(3).setCellValue("");
+        sheet.getRow(11).createCell(2).setCellValue("");
+        sheet.getRow(11).createCell(3).setCellValue("");
+        sheet.getRow(12).createCell(2).setCellValue(temp.get(178) + milhu);
+        sheet.getRow(12).createCell(3).setCellValue(add + temp.get(179) + per);
+
+
+        sheet = wb.getSheet("金融");
+        sheet.getRow(0).createCell(2).setCellValue(temp.get(186) + bilyuan);
+        sheet.getRow(0).createCell(3).setCellValue(add + temp.get(187) + per);
+        sheet.getRow(1).createCell(2).setCellValue(temp.get(190) + bilyuan);
+        sheet.getRow(1).createCell(3).setCellValue(add + temp.get(191) + per);
+
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(201) + bilyuan);
+        sheet.getRow(10).createCell(3).setCellValue(add + temp.get(202) + per);
+        sheet.getRow(11).createCell(2).setCellValue(temp.get(205) + bilyuan);
+        sheet.getRow(11).createCell(3).setCellValue(add + temp.get(206) + per);
+
+
+        sheet = wb.getSheet("教育");
+        sheet.getRow(0).createCell(1).setCellValue("");
+        sheet.getRow(0).createCell(3).setCellValue("");
+        sheet.getRow(0).createCell(5).setCellValue("");
+
+
+        sheet.getRow(6).createCell(1).setCellValue(temp.get(212) + suo);
+        sheet.getRow(6).createCell(2).setCellValue(temp.get(220) + milpeo);
+        sheet.getRow(6).createCell(3).setCellValue(temp.get(221) + milpeo);
+        sheet.getRow(7).createCell(1).setCellValue("");
+        sheet.getRow(7).createCell(2).setCellValue("");
+        sheet.getRow(7).createCell(3).setCellValue("");
+        sheet.getRow(8).createCell(1).setCellValue("");
+        sheet.getRow(8).createCell(2).setCellValue("");
+        sheet.getRow(8).createCell(3).setCellValue("");
+        sheet.getRow(9).createCell(1).setCellValue(temp.get(210) + suo);
+        sheet.getRow(9).createCell(2).setCellValue(temp.get(216) + milpeo);
+        sheet.getRow(9).createCell(3).setCellValue(temp.get(217) + milpeo);
+        sheet.getRow(10).createCell(1).setCellValue(temp.get(209) + suo);
+        sheet.getRow(10).createCell(2).setCellValue(temp.get(213) + milpeo);
+        sheet.getRow(10).createCell(3).setCellValue(temp.get(214) + milpeo);
+
+
+        try {
+            String excelPath = "file/" + title + ".xlsx";
+            FileOutputStream fileOutputStream = new FileOutputStream(excelPath);
+            wb.write(fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            System.out.println("Success");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

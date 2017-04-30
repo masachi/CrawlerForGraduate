@@ -43,7 +43,7 @@ public class CrawlData implements Runnable {
         client.getCookieManager().setCookiesEnabled(false);
         client.getOptions().setThrowExceptionOnScriptError(false); //js运行错误时，是否抛出异常
         client.getOptions().setThrowExceptionOnFailingStatusCode(false);
-        client.getOptions().setTimeout(10000); //设置连接超时时间 ，这里是10S。如果为0，则无限期等待
+        client.getOptions().setTimeout(100000); //设置连接超时时间 ，这里是10S。如果为0，则无限期等待
 
         client.waitForBackgroundJavaScript(600 * 1000);
         client.setAjaxController(new NicelyResynchronizingAjaxController());
