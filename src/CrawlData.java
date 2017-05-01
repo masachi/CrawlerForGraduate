@@ -141,7 +141,7 @@ public class CrawlData implements Runnable {
                     WriteToExcel.writeToExcel2012(temp,title);
                     break;
                 case 2013:
-                    //System.out.println(totalText);
+                    System.out.println(totalText);
                     WriteToExcel.writeToExcel2013(temp,title);
                     break;
                 case 2014:
