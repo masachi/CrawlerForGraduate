@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 /**
- * \d+.\d+|\d+
+ * \d+\.\d+|\d+
  */
 public class WriteToExcel {
     private static String per = "%";
