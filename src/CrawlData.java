@@ -72,7 +72,9 @@ public class CrawlData implements Runnable {
             ArrayList<String> temp = new ArrayList<>();
             getPageFromWeb(urlOld);
             String totalText = originPage.replaceAll("<[^>]+>", "").replaceAll("\r\n", "").replaceAll(" ", "");
-
+            if(year == 2015 || year == 2016){
+                totalText = totalText.replaceAll("\n","").replaceAll("&lt.*?gt;", "");totalText = totalText.replaceAll("\n","").replaceAll("&lt.*?gt;", "");
+            }
             Matcher m = Pattern.compile("(\\d+\\.\\d+|\\d+)").matcher(totalText);
             temp.add(String.valueOf(0));
             while(m.find()){
@@ -141,7 +143,7 @@ public class CrawlData implements Runnable {
                     WriteToExcel.writeToExcel2012(temp,title);
                     break;
                 case 2013:
-                    System.out.println(totalText);
+                    //System.out.println(totalText);
                     WriteToExcel.writeToExcel2013(temp,title);
                     break;
                 case 2014:
