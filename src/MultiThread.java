@@ -20,6 +20,7 @@ public class MultiThread {
     private static ArrayList<String> title = new ArrayList<>();
     private static Document doc = null;
     private static WebClient wc = new WebClient(BrowserVersion.CHROME);
+    private static int i = 0;
 
     private static void getPageFromWeb() throws Exception{
         wc.getOptions().setJavaScriptEnabled(true); //启用JS解释器，默认为true
@@ -54,12 +55,21 @@ public class MultiThread {
         }
     }
 
+    public static synchronized void ThreadFinish(){
+        i++;
+    }
+
     public static void main(String[] args){
         try{
             getPageFromWeb();
             for(int i=0;i<subUrl.size();i++){
                 new Thread(new CrawlData(title.get(i), subUrl.get(i))).start();
             }
+            while(i != 10){
+                Thread.sleep(1000);
+            }
+            //System.out.println("233333");
+            WriteToExcel.MakePicToExcel();
         }
         catch (Exception e){
             e.printStackTrace();

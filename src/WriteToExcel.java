@@ -197,6 +197,7 @@ public class WriteToExcel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MultiThread.ThreadFinish();
     }
 
     public static void writeToExcel2008(ArrayList<String> temp, String title){
@@ -370,6 +371,7 @@ public class WriteToExcel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MultiThread.ThreadFinish();
     }
 
     public static void writeToExcel2009(ArrayList<String> temp, String title){
@@ -543,6 +545,7 @@ public class WriteToExcel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MultiThread.ThreadFinish();
     }
 
     public static void writeToExcel2010(ArrayList<String> temp, String title){
@@ -716,7 +719,7 @@ public class WriteToExcel {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        MultiThread.ThreadFinish();
     }
 
     public static void writeToExcel2011(ArrayList<String> temp, String title){
@@ -890,6 +893,7 @@ public class WriteToExcel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MultiThread.ThreadFinish();
     }
 
     public static void writeToExcel2012(ArrayList<String> temp, String title){
@@ -1063,6 +1067,7 @@ public class WriteToExcel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MultiThread.ThreadFinish();
     }
 
     public static void writeToExcel2013(ArrayList<String> temp, String title){
@@ -1236,6 +1241,7 @@ public class WriteToExcel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MultiThread.ThreadFinish();
     }
 
     public static void writeToExcel2014(ArrayList<String> temp, String title){
@@ -1409,6 +1415,7 @@ public class WriteToExcel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MultiThread.ThreadFinish();
     }
 
     public static void writeToExcel2015(ArrayList<String> temp, String title){
@@ -1582,6 +1589,7 @@ public class WriteToExcel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        MultiThread.ThreadFinish();
     }
 
     public static void writeToExcel2016(ArrayList<String> temp, String title){
@@ -1753,6 +1761,47 @@ public class WriteToExcel {
             fileOutputStream.close();
             System.out.println("Success");
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        MultiThread.ThreadFinish();
+    }
+
+    public static void MakePicToExcel(){
+        Workbook wb06 = null;
+        Workbook wb08 = null;
+        Workbook wb09 = null;
+        Workbook wb10 = null;
+        Workbook wb11 = null;
+        Workbook wb12 = null;
+        Workbook wb13 = null;
+        Workbook wb14 = null;
+        Workbook wb15 = null;
+        Workbook wb16 = null;
+        try {
+            FileInputStream fileInputStream06 = new FileInputStream("file/" + "2006年德阳市国民经济和社会发展统计公报" + ".xlsx");
+            FileInputStream fileInputStream08 = new FileInputStream("file/" + "2008年德阳市国民经济和社会发展统计公报" + ".xlsx");
+            FileInputStream fileInputStream09 = new FileInputStream("file/" + "2009年德阳市国民经济和社会发展统计公报" + ".xlsx");
+            FileInputStream fileInputStream10 = new FileInputStream("file/" + "2010年德阳市国民经济和社会发展统计公报" + ".xlsx");
+            FileInputStream fileInputStream11 = new FileInputStream("file/" + "2011年德阳市国民经济和社会发展统计公报" + ".xlsx");
+            FileInputStream fileInputStream12 = new FileInputStream("file/" + "2012年德阳市国民经济和社会发展统计公报" + ".xlsx");
+            FileInputStream fileInputStream13 = new FileInputStream("file/" + "2013年德阳市国民经济和社会发展统计公报" + ".xlsx");
+            FileInputStream fileInputStream14 = new FileInputStream("file/" + "2014年德阳市国民经济和社会发展统计公报" + ".xlsx");
+            FileInputStream fileInputStream15 = new FileInputStream("file/" + "2015年德阳市国民经济和社会发展统计公报" + ".xlsx");
+            FileInputStream fileInputStream16 = new FileInputStream("file/" + "2016年德阳市国民经济和社会发展统计公报" + ".xlsx");
+
+            wb06 = WorkbookFactory.create(fileInputStream06);
+            wb08 = WorkbookFactory.create(fileInputStream08);
+            wb09 = WorkbookFactory.create(fileInputStream09);
+            wb10 = WorkbookFactory.create(fileInputStream10);
+            wb11 = WorkbookFactory.create(fileInputStream11);
+            wb12 = WorkbookFactory.create(fileInputStream12);
+            wb13 = WorkbookFactory.create(fileInputStream13);
+            wb14 = WorkbookFactory.create(fileInputStream14);
+            wb15 = WorkbookFactory.create(fileInputStream15);
+            wb16 = WorkbookFactory.create(fileInputStream16);
+
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
