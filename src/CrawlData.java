@@ -16,6 +16,7 @@ import org.jsoup.nodes.Document;
 
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,6 +37,7 @@ public class CrawlData implements Runnable {
     }
 
     private void getPageFromWeb(String URL) throws Exception {
+        Random random = new Random();
         client = new WebClient(BrowserVersion.CHROME);
         client.getOptions().setJavaScriptEnabled(true); //启用JS解释器，默认为true
         client.getOptions().setCssEnabled(false); //禁用css支持
@@ -51,6 +53,7 @@ public class CrawlData implements Runnable {
         HtmlPage page = client.getPage(URL);
         client.waitForBackgroundJavaScript(1000 * 3);
         client.setJavaScriptTimeout(0);
+        client.addRequestHeader("User-Agent", MultiThread.ua.get(random.nextInt(9800)));
         //System.out.println(page);
         String pageXml = page.asXml(); //以xml的形式获取响应文本
         //System.out.println(pageXml);

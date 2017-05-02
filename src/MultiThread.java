@@ -7,8 +7,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Masachi on 2017/4/18.
@@ -21,8 +26,24 @@ public class MultiThread {
     private static Document doc = null;
     private static WebClient wc = new WebClient(BrowserVersion.CHROME);
     private static int i = 0;
+    public static List<String> ua = new ArrayList<>();
+
+    private static void ReadUA() {
+        java.io.File file = new java.io.File("ua/user_agents");
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String temp = "";
+            while ((temp = reader.readLine()) != null) {
+                ua.add(temp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private static void getPageFromWeb() throws Exception{
+        Random random = new Random();
         wc.getOptions().setJavaScriptEnabled(true); //启用JS解释器，默认为true
         wc.getOptions().setCssEnabled(false); //禁用css支持
 //        wc.getOptions().setProxyConfig(new ProxyConfig("185.10.17.134",3128));
@@ -37,6 +58,7 @@ public class MultiThread {
         HtmlPage page = wc.getPage(URL);
         wc.waitForBackgroundJavaScript(1000*3);
         wc.setJavaScriptTimeout(0);
+        wc.addRequestHeader("User-Agent", ua.get(random.nextInt(9800)));
 //        System.out.println(page);
         String pageXml = page.asXml(); //以xml的形式获取响应文本
 //        doc = Jsoup.connect(Url).get();
